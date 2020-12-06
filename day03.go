@@ -114,8 +114,8 @@ func day3_part2() {
 	// moveDown := [2]int{1, 2}
 
 	rowsCount := len(lines)
-	accross := 1 // 1 3 5 7
-	down := 2    // 1 2
+	accross := 3 // 1 3 5 7
+	down := 1    // 1 2
 	widthRequired := rowsCount * accross
 	oneLineLength := len(lines[0])
 	reqLen := widthRequired/oneLineLength + 1

@@ -74,7 +74,7 @@ How many passwords are valid according to the new interpretation of the policies
 
 func day2_part2() {
 	re := regexp.MustCompile(`(\d+)\-(\d+) (\w): (\w+)`) // https://regexr.com
-	count_passing := 0
+	countPassing := 0
 	for _, row := range passwords {
 		res := re.FindStringSubmatch(row) // find string sub matches
 		pos1, _ := strconv.Atoi(res[1])
@@ -87,9 +87,9 @@ func day2_part2() {
 			letter != string(passw[pos1-1]) &&
 				letter == string(passw[pos2-1]) {
 			passing = true
-			count_passing++
+			countPassing++
 		}
 		fmt.Println(letter, "must be at", pos1, "but not", pos2, "or vice versa", passw, passing)
 	}
-	fmt.Println("Passing count:", count_passing)
+	fmt.Println("Passing count:", countPassing)
 }

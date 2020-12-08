@@ -118,7 +118,6 @@ func day7_part2() {
 		elements := strings.Split(rawline, ", ")
 		reference[elements[0]] = elements[1:] // e.g. {shiny gold: ['2 dark red reference', '2 olive plum']}
 	}
-	// stack := []string{start}
 	bag := Bag{name: "shiny gold"}
 	bag.mess = reference[bag.name]
 	parseBag(&bag)
@@ -130,7 +129,6 @@ func parseBag(pbag *Bag) {
 	fmt.Println(pbag, count)
 	count++
 	for _, b := range pbag.mess {
-		// fmt.Println("mess:", b)
 		tokens := strings.Split(b, " ")
 		if tokens[0] != "no" {
 			numbags, _ := strconv.Atoi(tokens[0])
@@ -138,8 +136,6 @@ func parseBag(pbag *Bag) {
 				newbag := Bag{name: strings.Join(tokens[1:], " ")}
 				newbag.mess = reference[newbag.name]
 				pbag.contents = append(pbag.contents, &newbag)
-				// fmt.Println("Adding to contents", newbag)
-				fmt.Print(".")
 				parseBag(&newbag)
 			}
 		}

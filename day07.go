@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
+	"time"
 )
 
 /**
@@ -113,6 +115,7 @@ var reference = make(map[string][]string)
 
 func day7_part2() {
 	contents := getFilesContents("day07.input")
+	start := time.Now()
 	rawlines := strings.Split(contents, "\n")
 	for _, rawline := range rawlines {
 		elements := strings.Split(rawline, ", ")
@@ -121,12 +124,15 @@ func day7_part2() {
 	bag := Bag{name: "shiny gold"}
 	bag.mess = reference[bag.name]
 	parseBag(&bag)
+	elapsed := time.Since(start)
+	fmt.Println("Elapsed", elapsed, count-1)
 }
 
 var count uint = 0
 
 func parseBag(pbag *Bag) {
-	fmt.Println(pbag, count)
+	// timeTrack(time.Now(), pbag.name)
+	// fmt.Println(pbag, count)
 	count++
 	for _, b := range pbag.mess {
 		tokens := strings.Split(b, " ")
@@ -140,4 +146,9 @@ func parseBag(pbag *Bag) {
 			}
 		}
 	}
+}
+
+func timeTrack(start time.Time, name string) {
+	elapsed := time.Since(start)
+	log.Printf("%s took %s", name, elapsed)
 }

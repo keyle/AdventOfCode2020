@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
-	"time"
 )
 
 /**
@@ -145,7 +144,6 @@ Your puzzle answer was 1303.
 func day8_part2() {
 	contents := getFilesContents("day08.input")
 
-	start := time.Now()
 	lines := strings.Split(contents, "\n")
 
 	passed := false
@@ -203,9 +201,7 @@ func day8_part2() {
 		}
 	}
 
-	elapsed := time.Since(start)
 	fmt.Println("\nPassed", passed, "mutation", mutation)
-	fmt.Println("Elapsed", elapsed)
 }
 
 func mutate(instructions []*Instruction, req int) []*Instruction {

@@ -108,7 +108,7 @@ Your puzzle answer was 158493.
 type Bag struct {
 	name     string
 	mess     []string
-	contents []Bag
+	contents []*Bag
 }
 
 var reference = make(map[string][]string)
@@ -123,14 +123,14 @@ func day7_part2() {
 	}
 	bag := Bag{name: "shiny gold"}
 	bag.mess = reference[bag.name]
-	parseBag(bag)
+	parseBag(&bag)
 	elapsed := time.Since(start)
 	fmt.Println("Elapsed", elapsed, count-1)
 }
 
 var count uint = 0
 
-func parseBag(pbag Bag) {
+func parseBag(pbag *Bag) {
 	// timeTrack(time.Now(), pbag.name)
 	// fmt.Println(pbag, count)
 	count++
@@ -141,8 +141,8 @@ func parseBag(pbag Bag) {
 			for i := 0; i < numbags; i++ {
 				newbag := Bag{name: strings.Join(tokens[1:], " ")}
 				newbag.mess = reference[newbag.name]
-				pbag.contents = append(pbag.contents, newbag)
-				parseBag(newbag)
+				pbag.contents = append(pbag.contents, &newbag)
+				parseBag(&newbag)
 			}
 		}
 	}

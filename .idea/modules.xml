@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/adventOC20.iml" filepath="$PROJECT_DIR$/adventOC20.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aoc2020.iml" filepath="$PROJECT_DIR$/aoc2020.iml" />
     </modules>
   </component>
 </project>

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 )
 
 /**
@@ -143,6 +144,8 @@ Your puzzle answer was 1303.
 
 func day8_part2() {
 	contents := getFilesContents("day08.input")
+
+	start := time.Now()
 	lines := strings.Split(contents, "\n")
 
 	passed := false
@@ -172,9 +175,9 @@ func day8_part2() {
 			}
 
 			ins := instructions[i]
-			fmt.Println(i, ins.name, ins.value, ins.count)
+			// fmt.Println(i, ins.name, ins.value, ins.count)
 			if ins.count > 0 {
-				fmt.Println("ran", ins.count, "times, aborting with accumulator at:", accumulator)
+				// fmt.Println("ran", ins.count, "times, aborting with accumulator at:", accumulator)
 				break
 			}
 			rancount++
@@ -192,14 +195,17 @@ func day8_part2() {
 				i++
 			}
 		}
-		for k, v := range instructions {
-			fmt.Println(k, v.name, "\t", v.value, "\t", v.count)
+		// for k, v := range instructions {
+		// 	fmt.Println(k, v.name, "\t", v.value, "\t", v.count)
+		// }
+		if passed {
+			fmt.Println("finished, accumulator: ", accumulator)
 		}
-
-		fmt.Println("finished, accumulator: ", accumulator)
 	}
 
+	elapsed := time.Since(start)
 	fmt.Println("\nPassed", passed, "mutation", mutation)
+	fmt.Println("Elapsed", elapsed)
 }
 
 func mutate(instructions []*Instruction, req int) []*Instruction {

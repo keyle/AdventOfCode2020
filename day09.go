@@ -80,10 +80,10 @@ func find_fist_invalid(list []int, preamble int) int {
 	for i := preamble; i < len(list); i++ {
 		res, _ := find_valid(list[i], list[i-preamble:i])
 		if !res {
-			fmt.Println("found invalid", list[i])
+			// fmt.Println("found invalid", list[i])
 			return list[i]
 		}
-		fmt.Println("valid", list[i])
+		// fmt.Println("valid", list[i])
 	}
 	return 0
 }
@@ -166,6 +166,6 @@ func add_to_invalid(list []int, invalid int, start int) (int, int, int) {
 		largest = math.Max(float64(list[start+i]), float64(largest))
 		i++
 	}
-	fmt.Println("ended at", sum, "after", i, "attempts")
+	// fmt.Println("ended at", sum, "after", i, "attempts")
 	return sum, int(smallest), int(largest)
 }

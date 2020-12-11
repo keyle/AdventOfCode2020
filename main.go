@@ -25,7 +25,8 @@ func main() {
 	// day8_part1()
 	// day8_part2()
 	// day9_part1()
-	day9_part2()
+	// day9_part2()
+	day10_part1()
 
 	elapsed := time.Since(start)
 	fmt.Println("Elapsed", elapsed)

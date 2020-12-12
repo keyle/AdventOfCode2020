@@ -83,7 +83,7 @@ func day10_part1() {
 
 	threes++ // last adapter to device
 
-	fmt.Println("threes", threes, "ones", ones, "total", threes * ones)
+	fmt.Println("threes", threes, "ones", ones, "total", threes*ones)
 
 	// highest := findHighest(adapters)
 	// var cur int = 0
@@ -93,36 +93,28 @@ func day10_part1() {
 	// }
 }
 
-func findSmallest(lst []int) int {
-	sml := ^int(0)
-	for _, v := range lst {
-		if v < sml {
-			sml = v
-		}
-	}
-	return sml
-}
-
-func findHighest(lst []int) int {
-	var hgh int = 0
-	for _, v := range lst {
-		if v > hgh {
-			hgh = v
-		}
-	}
-	return hgh
-}
-
-
 func day10_part2() {
-
 	contents := getFilesContents("day10.input")
 	data := strings.Split(contents, "\n")
-	adapters := []int{}
+	adapters := []int{0}
 	for _, v := range data {
 		u, _ := strconv.Atoi(v)
 		adapters = append(adapters, u)
 	}
-
 	sort.Ints(adapters)
+	adapters = append(adapters, adapters[len(adapters)-1]+3)
+	fmt.Println(adapters)
+
+	marks := make(map[int]int)
+	marks[0] = 1
+
+	for i := 0; i < len(adapters); i++ {
+		for j := i + 1; j < len(adapters); j++ {
+			if adapters[j] > adapters[i]+3 {
+				break
+			}
+			marks[j] += marks[i]
+		}
+	}
+	fmt.Println(marks[len(adapters)-1])
 }

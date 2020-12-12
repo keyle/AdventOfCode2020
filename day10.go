@@ -84,14 +84,29 @@ func day10_part1() {
 	threes++ // last adapter to device
 
 	fmt.Println("threes", threes, "ones", ones, "total", threes*ones)
-
-	// highest := findHighest(adapters)
-	// var cur int = 0
-	// for i <= highest {
-	// 	nextSmallest := findSmallest(adapters)
-	//
-	// }
 }
+
+/**
+To completely determine whether you have enough adapters, you'll need to figure out how many different ways they can be arranged. Every arrangement needs to connect the charging outlet to your device. The previous rules about when adapters can successfully connect still apply.
+
+The first example above (the one that starts with 16, 10, 15) supports the following arrangements:
+
+(0), 1, 4, 5, 6, 7, 10, 11, 12, 15, 16, 19, (22)
+(0), 1, 4, 5, 6, 7, 10, 12, 15, 16, 19, (22)
+(0), 1, 4, 5, 7, 10, 11, 12, 15, 16, 19, (22)
+(0), 1, 4, 5, 7, 10, 12, 15, 16, 19, (22)
+(0), 1, 4, 6, 7, 10, 11, 12, 15, 16, 19, (22)
+(0), 1, 4, 6, 7, 10, 12, 15, 16, 19, (22)
+(0), 1, 4, 7, 10, 11, 12, 15, 16, 19, (22)
+(0), 1, 4, 7, 10, 12, 15, 16, 19, (22)
+(The charging outlet and your device's built-in adapter are shown in parentheses.) Given the adapters from the first example, the total number of arrangements that connect the charging outlet to your device is 8.
+
+You glance back down at your bag and try to remember why you brought so many adapters; there must be more than a trillion valid ways to arrange them! Surely, there must be an efficient way to count the arrangements.
+
+What is the total number of distinct ways you can arrange the adapters to connect the charging outlet to your device?
+
+Your puzzle answer was 64793042714624.
+*/
 
 func day10_part2() {
 	contents := getFilesContents("day10.input")
